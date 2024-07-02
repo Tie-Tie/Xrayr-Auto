@@ -57,6 +57,7 @@ api_host=$3
 api_key=$4
 
 # 生成配置文件
+echo "正在根据输入参数生成配置文件！"
 generate_config "$start_node_id" "$end_node_id" "$api_host" "$api_key"
 
 # 下载 XrayR2
@@ -64,7 +65,11 @@ echo "下载 XrayR2 中..."
 wget "https://github.com/Tie-Tie/Xrayr-Auto/releases/download/xrayr-auto/XrayR2" -q --show-progress
 
 # 赋予执行权限
+echo "赋予XrayR2执行权限"
 chmod +x XrayR2
+
+echo "正在设置环境变量XRAY_BUF_SPLICE=disable，有效提高流量统计准确率！"
+export XRAY_BUF_SPLICE=disable
 
 # 执行 XrayR2
 echo "执行 XrayR2..."
